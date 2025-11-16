@@ -1,0 +1,14 @@
+# Python venvs
+venv/
+server/venv/
+.env/
+
+# Python cache
+__pycache__/
+*.py[cod]
+*.pyo
+
+# IDE stuff
+.vscode/
+.idea/
+*.iml
