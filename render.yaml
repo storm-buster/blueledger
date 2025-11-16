@@ -1,0 +1,22 @@
+services:
+  # Node.js Express Server (Main API)
+  - type: web
+    name: neeledger-api
+    env: node
+    rootDir: server
+    buildCommand: npm install
+    startCommand: npm start
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: FRONTEND_URL
+        sync: false  # Set this in Render dashboard to your frontend URL
+
+  # Python FastAPI Server (Biomass Prediction API) - Optional, only if biomass_api.py exists in server/
+  - type: web
+    name: neeledger-biomass-api
+    env: python
+    rootDir: server
+    buildCommand: pip install -r requirements.txt
+    startCommand: uvicorn biomass_api:app --host 0.0.0.0 --port $PORT
+
